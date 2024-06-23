@@ -1,6 +1,7 @@
 package ru.vslukianenko.vsrestintegrservice.service;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
  * Сервис для отправки сообщений в Kafka
  */
 @Service
+@Slf4j
 public class KafkaProducerService {
     // Шаблон для взаимоджействия Kafka
     private final KafkaTemplate<String,String> kafkaTemplate;
@@ -28,9 +30,10 @@ public class KafkaProducerService {
      */
     public void sendMessage(String topic, String message) throws Exception {
         try {
-        kafkaTemplate.send(topic, message);
-        throw new Exception("asdasdas");
+            kafkaTemplate.send(topic, message);
+            log.info("Message: {} sent to topic {}", message, topic);
         } catch (Exception e){
+            log.error("Error in {}: {}, cause", e.getClass(),e.getMessage(), e.getCause());
             throw new Exception("Restintegr-service exception",e);
         }
     }
