@@ -1,4 +1,4 @@
-package ru.vslukianenko.vscoreservice;
+package ru.vslukianenko.vscoreservice.config;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

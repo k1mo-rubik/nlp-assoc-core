@@ -26,8 +26,13 @@ public class KafkaProducerService {
      * @param topic топик, в который будет отправелно соодщение
      * @param message сообщение
      */
-    public void sendMessage(String topic, String message){
+    public void sendMessage(String topic, String message) throws Exception {
+        try {
         kafkaTemplate.send(topic, message);
+        throw new Exception("asdasdas");
+        } catch (Exception e){
+            throw new Exception("Restintegr-service exception",e);
+        }
     }
 
 }

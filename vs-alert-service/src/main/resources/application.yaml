@@ -1,0 +1,7 @@
+spring.application.name=vs-alert-service
+
+server.port=8082
+discord.webhook.url=${DS_HOOK_URL}
+telegram.bot.token=${TG_BOT_TOKEN}
+
+telegram.chat.id=${TG_CHAT_ID}
